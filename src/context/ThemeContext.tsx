@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type { Theme } from "../types/ui";
+import type { Theme } from "../types/mainTypes";
 
 export const ThemeContext = createContext<{
   theme: Theme;

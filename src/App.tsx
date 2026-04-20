@@ -1,14 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from "./pages/Home";
 import AppLayout from "./pages/AppLayout";
-import NotFound from "./pages/NotFound";
+import NotFoundPage from "./pages/NotFoundPage";
 import AppRenderer from "./pages/AppRenderer";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
-    errorElement: <NotFound />,
+    errorElement: <NotFoundPage />,
   },
   {
     path: "/app/:appId",

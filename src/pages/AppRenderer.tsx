@@ -7,7 +7,7 @@ import QuizApp from "../apps/QuizApp";
 import TodoListApp from "../apps/TodoListApp";
 import WeatherApp from "../apps/WeatherApp";
 import ClockApp from "../apps/ClockApp";
-import NotFound from "./NotFound";
+import NotFoundApp from "./NotFoundApp";
 
 export default function AppRenderer() {
   const appId = useParams().appId;
@@ -22,9 +22,7 @@ export default function AppRenderer() {
     "prayer-times": <PrayerTimesApp />,
   };
 
-  if(!(appId && appId in appsMap)) return <NotFound />
+  if (!(appId && appId in appsMap)) return <NotFoundApp />;
 
-  return (
-    appsMap[appId as keyof typeof appsMap]
-  );
+  return appsMap[appId as keyof typeof appsMap];
 }
