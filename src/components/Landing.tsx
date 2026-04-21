@@ -2,53 +2,58 @@ import { useEffect, useRef } from "react";
 import Container from "./UI/Container";
 import { sleep } from "../utils/mainUtils";
 
+const words = [
+  "Prayer Times",
+  "Currency Converter",
+  "Notes",
+  "Clock",
+  "To-do List",
+  "Weather",
+  "Quiz",
+  "Calculator",
+];
+
 export default function Landing() {
-  const alternatingWords = [
-    "Prayer Times",
-    "Currency Converter",
-    "Notes",
-    "Clock",
-    "To-do List",
-    "Weather",
-    "Quiz",
-    "Calculator",
-  ];
   const wordEl = useRef<HTMLParagraphElement>(null);
-  const wordState = useRef({
-    currentWord: "Prayer Times",
-    isAnimating: false,
-  });
+  const wordIndex = useRef(0);
 
   useEffect(() => {
+    let canceled = false;
+    wordIndex.current = Math.floor(Math.random() * words.length);
+
     const animate = async () => {
-      if (wordState.current.isAnimating || !wordEl.current) return;
+      if (!wordEl.current) return;
 
-      wordState.current.isAnimating = true;
+      const word = words[wordIndex.current];
 
-      while (wordState.current.currentWord.length > 0) {
-        wordEl.current.textContent = wordState.current.currentWord;
+      // typing
+      for (let i = 0; i < word.length; ++i) {
+        wordEl.current.textContent = word.slice(0, i + 1);
         await sleep(100);
-        wordState.current.currentWord = wordState.current.currentWord.slice(
-          0,
-          -1,
-        );
       }
 
-      const newWord =
-        alternatingWords[Math.floor(Math.random() * alternatingWords.length)];
+      await sleep(1000);
 
-      for (let i = 0; i <= newWord.length; ++i) {
-        wordEl.current.textContent = wordState.current.currentWord;
+      // deleting
+      for (let i = 0; i < word.length; ++i) {
+        wordEl.current.textContent = word.slice(0, word.length - i - 1);
         await sleep(100);
-        wordState.current.currentWord = newWord.slice(0, i + 1);
       }
 
-      wordState.current.isAnimating = false;
+      wordIndex.current = (wordIndex.current + 1) % words.length;
     };
 
-    const interval = setInterval(animate, 3000);
-    animate();
-    return () => clearInterval(interval);
+    const run = async () => {
+      while (!canceled) {
+        await animate();
+        await sleep(300);
+      }
+    };
+    run();
+
+    return () => {
+      canceled = true;
+    };
   }, []);
 
   return (
