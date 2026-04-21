@@ -64,7 +64,7 @@ export default function Landing() {
       <Container className="min-h-screen pt-[calc(var(--spacing-header-h)+var(--spacing-section-p))] text-center">
         <h2 className="text-[40px]">Some simple utilities</h2>
         <p ref={wordEl} className="font-[600] text-[60px] min-h-[90px]"></p>
-        <p className="text-text-color-light">
+        <p className="mt-[40px] text-text-color-light">
           Try some of our useful apps including prayer times, notes, clock, and
           many others!
         </p>
