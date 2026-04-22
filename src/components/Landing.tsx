@@ -73,7 +73,7 @@ export default function Landing() {
           ref={wordElement}
           className="font-[600] text-[60px] min-h-[90px]"
         ></p>
-        <p className="mt-[40px] text-text-color-light">
+        <p className="mt-[40px] mx-auto max-w-[min(550px,100%)] text-text-color-light">
           Try some of our useful apps including prayer times, notes, clock, and
           many others!
         </p>

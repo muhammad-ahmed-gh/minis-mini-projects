@@ -5,23 +5,10 @@
     @apply scroll-smooth;
   }
   * {
-    font-family:
-      Poppins,
-      system-ui,
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      "Open Sans",
-      "Helvetica Neue",
-      sans-serif;
-    color: var(--color-text-color);
+    @apply text-text-color font-[Poppins,system-ui,sans-serif];
   }
   body {
-    overflow-x: hidden;
+    @apply overflow-x-hidden;
   }
 }
 
@@ -33,11 +20,22 @@
 
 @theme {
   --color-primary: #59f100;
+  --color-primary-light: #dbffc5;
+  --color-primary-lightest: #bafc93;
   --color-primary-dark: #53e100;
-  --color-primary-darkest: #4fd700;
+  --color-primary-darkest: #42b200;
   --color-text-color: #222222;
   --color-text-color-light: #777777;
 
   --spacing-header-h: 75px;
   --spacing-section-p: 80px;
+
+  --animate-point-right: point-right 0.5s alternate infinite ease-in;
+
+  @keyframes point-right {
+    to {
+      transform: translateX(5px);
+    }
+  }
 }
+
