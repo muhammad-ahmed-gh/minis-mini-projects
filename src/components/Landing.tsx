@@ -29,7 +29,10 @@ export default function Landing() {
       // typing
       for (let i = 0; i < word.length; ++i) {
         wordElement.current.textContent = word.slice(0, i + 1);
-        await sleep(100);
+
+        // sleep if the typed character isn't space
+        if (word.at(i) !== " ") await sleep(100);
+
         // unmount can happen in sleep periods
         if (canceled || !wordElement.current) return;
       }
@@ -41,7 +44,10 @@ export default function Landing() {
       // deleting
       for (let i = 0; i < word.length; ++i) {
         wordElement.current.textContent = word.slice(0, word.length - i - 1);
-        await sleep(100);
+
+        // sleep if the deleted character isn't space
+        if (word.at(word.length - i - 1) !== " ") await sleep(100);
+
         // unmount can happen in sleep periods
         if (canceled || !wordElement.current) return;
       }
