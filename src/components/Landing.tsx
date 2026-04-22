@@ -14,7 +14,7 @@ const words = [
 ];
 
 export default function Landing() {
-  const wordEl = useRef<HTMLParagraphElement>(null);
+  const wordElement = useRef<HTMLParagraphElement>(null);
   const wordIndex = useRef(0);
 
   useEffect(() => {
@@ -22,22 +22,28 @@ export default function Landing() {
     wordIndex.current = Math.floor(Math.random() * words.length);
 
     const animate = async () => {
-      if (!wordEl.current) return;
+      if (!wordElement.current) return;
 
       const word = words[wordIndex.current];
 
       // typing
       for (let i = 0; i < word.length; ++i) {
-        wordEl.current.textContent = word.slice(0, i + 1);
+        wordElement.current.textContent = word.slice(0, i + 1);
         await sleep(100);
+        // unmount can happen in sleep periods
+        if (canceled || !wordElement.current) return;
       }
 
       await sleep(1000);
+      // unmount can happen in sleep periods
+      if (canceled || !wordElement.current) return;
 
       // deleting
       for (let i = 0; i < word.length; ++i) {
-        wordEl.current.textContent = word.slice(0, word.length - i - 1);
+        wordElement.current.textContent = word.slice(0, word.length - i - 1);
         await sleep(100);
+        // unmount can happen in sleep periods
+        if (canceled || !wordElement.current) return;
       }
 
       wordIndex.current = (wordIndex.current + 1) % words.length;
@@ -63,7 +69,10 @@ export default function Landing() {
     >
       <Container className="min-h-screen pt-[calc(var(--spacing-header-h)+var(--spacing-section-p))] text-center">
         <h2 className="text-[40px]">Some simple utilities</h2>
-        <p ref={wordEl} className="font-[600] text-[60px] min-h-[90px]"></p>
+        <p
+          ref={wordElement}
+          className="font-[600] text-[60px] min-h-[90px]"
+        ></p>
         <p className="mt-[40px] text-text-color-light">
           Try some of our useful apps including prayer times, notes, clock, and
           many others!
