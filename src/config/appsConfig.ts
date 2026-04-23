@@ -41,6 +41,7 @@ type AppsData = {
   [route in AppRoute]: {
     headerLogo: string;
     headerLinks: HeaderLinks;
+    settings: { [index: string]: unknown };
   };
 };
 
@@ -54,6 +55,28 @@ export const appsData: AppsData = {
         href: "/",
       },
     ],
+    settings: {
+      keys: [
+        { id: 1, label: "7" },
+        { id: 2, label: "8" },
+        { id: 3, label: "9" },
+        { id: 4, label: "DEL", bg: "second" },
+        { id: 5, label: "4" },
+        { id: 6, label: "5" },
+        { id: 7, label: "6" },
+        { id: 8, label: "+" },
+        { id: 9, label: "1" },
+        { id: 10, label: "2" },
+        { id: 11, label: "3" },
+        { id: 12, label: "-" },
+        { id: 13, label: "." },
+        { id: 14, label: "0" },
+        { id: 15, label: "/" },
+        { id: 16, label: "⨯" },
+        { id: 17, label: "RESET", long: true, bg: "second" },
+        { id: 18, label: "=", long: true, bg: "red" },
+      ],
+    },
   },
   weather: {
     headerLogo: "Weather",
@@ -64,6 +87,7 @@ export const appsData: AppsData = {
         href: "/",
       },
     ],
+    settings: {},
   },
   notes: {
     headerLogo: "Notes",
@@ -74,6 +98,7 @@ export const appsData: AppsData = {
         href: "/",
       },
     ],
+    settings: {},
   },
   todo: {
     headerLogo: "To-do List",
@@ -84,6 +109,7 @@ export const appsData: AppsData = {
         href: "/",
       },
     ],
+    settings: {},
   },
   clock: {
     headerLogo: "Clock",
@@ -94,6 +120,7 @@ export const appsData: AppsData = {
         href: "/",
       },
     ],
+    settings: {},
   },
   quiz: {
     headerLogo: "Quiz",
@@ -104,6 +131,7 @@ export const appsData: AppsData = {
         href: "/",
       },
     ],
+    settings: {},
   },
   "currency-converter": {
     headerLogo: "Currency Converter",
@@ -114,6 +142,7 @@ export const appsData: AppsData = {
         href: "/",
       },
     ],
+    settings: {},
   },
   "prayer-times": {
     headerLogo: "Prayer Times",
@@ -124,5 +153,6 @@ export const appsData: AppsData = {
         href: "/",
       },
     ],
+    settings: {},
   },
 };
