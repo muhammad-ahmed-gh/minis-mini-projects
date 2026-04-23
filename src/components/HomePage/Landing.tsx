@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import Container from "./UI/Container";
-import { sleep } from "../utils/mainUtils";
+import Container from "../UI/Container";
+import { sleep } from "../../utils/mainUtils";
 
 const words = [
   "Prayer Times",

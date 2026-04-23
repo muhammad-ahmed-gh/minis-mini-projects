@@ -32,7 +32,7 @@ type Cards = {
   icon: string;
 }[];
 
-export const appsData: Cards = [
+export const cardsData: Cards = [
   {
     id: 1,
     appPath: "calculator",

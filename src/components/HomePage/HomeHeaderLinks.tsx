@@ -1,13 +1,13 @@
 import clsx from "clsx";
 import { useContext } from "react";
-import { CurrSectionContext } from "../context/CurrSection";
-import { headerLinks } from "../config/mainConfigs";
+import { CurrSectionContext } from "../../context/CurrSection";
+import { headerLinks } from "../../config/homeConfigs";
 
 type Props = {
   isMenuOpen: boolean;
 };
 
-export default function HeaderLinks(props: Props) {
+export default function HomeHeaderLinks(props: Props) {
   const currSection = useContext(CurrSectionContext);
 
   return (

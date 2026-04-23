@@ -8,10 +8,17 @@ import TodoListApp from "../apps/TodoListApp";
 import WeatherApp from "../apps/WeatherApp";
 import ClockApp from "../apps/ClockApp";
 import NotFoundApp from "./NotFoundApp";
+import type { AppRoute } from "../config/appsConfig";
+import type { ReactNode } from "react";
+
+type AppsMap = {
+  [route in AppRoute]: ReactNode;
+}
 
 export default function AppRenderer() {
   const appId = useParams().appId;
-  const appsMap = {
+
+  const appsMap: AppsMap = {
     calculator: <CalculatorApp />,
     weather: <WeatherApp />,
     notes: <NotesApp />,

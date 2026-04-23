@@ -1,6 +1,6 @@
-import { appsData } from "../config/mainConfigs";
-import Card from "./UI/Card";
-import Container from "./UI/Container";
+import { cardsData } from "../../config/homeConfigs";
+import Card from "../UI/Card";
+import Container from "../UI/Container";
 
 export default function Apps() {
   return (
@@ -17,7 +17,7 @@ export default function Apps() {
           quiz, and more
         </p>
         <div className="mt-[48px] flex flex-wrap justify-center gap-[30px] ">
-          {appsData.map((appData) => (
+          {cardsData.map((appData) => (
             <Card
               key={appData.id}
               title={appData.title}

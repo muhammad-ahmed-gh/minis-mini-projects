@@ -1,6 +1,6 @@
-import Apps from "../components/Apps";
-import HomeHeader from "../components/HomeHeader";
-import Landing from "../components/Landing";
+import Apps from "../components/HomePage/Apps";
+import HomeHeader from "../components/HomePage/HomeHeader";
+import Landing from "../components/HomePage/Landing";
 
 export default function Home() {
   return (

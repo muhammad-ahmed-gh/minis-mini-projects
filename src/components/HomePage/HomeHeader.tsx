@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import { useEffect, useState } from "react";
-import HeaderLinks from "./HeaderLink";
-import HeaderBurger from "./HeaderBurger";
-import Container from "./UI/Container";
+import HomeHeaderLinks from "./HomeHeaderLinks";
+import HeaderBurger from "../UI/HeaderBurger";
+import Container from "../UI/Container";
 
 export default function HomeHeader() {
   const [areWeDown, setAreWeDown] = useState(window.scrollY > 50);
@@ -35,7 +35,7 @@ export default function HomeHeader() {
         </h1>
         <div className="flex items-center">
           <HeaderBurger isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-          <HeaderLinks isMenuOpen={isMenuOpen} />
+          <HomeHeaderLinks isMenuOpen={isMenuOpen} />
         </div>
       </Container>
     </header>
