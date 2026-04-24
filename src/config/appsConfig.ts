@@ -37,11 +37,39 @@ type HeaderLinks = {
   rel?: string;
 }[];
 
+type CalculatorSettings = {
+  keys: {
+    id: number;
+    label: string;
+    bg?: string;
+    long?: boolean;
+  }[];
+};
+
+type WeatherSettings = {[index: string]: unknown};
+type NotesSettings = {[index: string]: unknown};
+type TodoSettings = {[index: string]: unknown};
+type ClockSettings = {[index: string]: unknown};
+type QuizSettings = {[index: string]: unknown};
+type CurrencyConverterSettings = {[index: string]: unknown};
+type PrayerTimesSettings = {[index: string]: unknown};
+
+type AppSettingsMap = {
+  calculator: CalculatorSettings;
+  weather: WeatherSettings;
+  notes: NotesSettings;
+  todo: TodoSettings;
+  clock: ClockSettings;
+  quiz: QuizSettings;
+  "currency-converter": CurrencyConverterSettings;
+  "prayer-times": PrayerTimesSettings;
+};
+
 type AppsData = {
   [route in AppRoute]: {
     headerLogo: string;
     headerLinks: HeaderLinks;
-    settings: { [index: string]: unknown };
+    settings: AppSettingsMap[route];
   };
 };
 

@@ -3,7 +3,7 @@ import Container from "../components/UI/Container";
 
 export default function CalculatorApp() {
   return (
-    <section className="mt-[calc(var(--spacing-header-h)+var(--spacing-section-p))]">
+    <section className="pt-header-h">
       <Container>
         <Calculator />
       </Container>

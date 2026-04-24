@@ -1,13 +1,14 @@
 import clsx from "clsx";
-import { appsData, type AppRoute } from "../../config/appsConfig";
-import { NavLink, useParams } from "react-router";
+import { appsData} from "../../config/appsConfig";
+import { NavLink } from "react-router";
+import { useValidatedRoute } from "../../hooks/useValidatedRoute";
 
 type Props = {
   isMenuOpen: boolean;
 };
 
 export default function AppHeaderLinks(props: Props) {
-  const currentRoute = useParams().appId as AppRoute;
+  const currentRoute = useValidatedRoute();
 
   return (
     <ul
@@ -16,18 +17,20 @@ export default function AppHeaderLinks(props: Props) {
         props.isMenuOpen ? "max-h-[300px]" : "max-h-0",
       )}
     >
-      {appsData[currentRoute].headerLinks.map((link) => (
-        <li key={link.id}>
-          <NavLink
-            to={link.href}
-            className={clsx(
-              "block p-[10px_10px] bg-white uppercase text-[15px] [letter-spacing:1px] cursor-pointer transition-colors duration-300 md:bg-transparent md:py-[25px] md:px-[15px] text-[#3c4858] hover:text-primary-dark",
-            )}
-          >
-            {link.label}
-          </NavLink>
-        </li>
-      ))}
+      {currentRoute
+        ? appsData[currentRoute].headerLinks.map((link) => (
+            <li key={link.id}>
+              <NavLink
+                to={link.href}
+                className={clsx(
+                  "block p-[10px_10px] bg-white uppercase text-[15px] [letter-spacing:1px] cursor-pointer transition-colors duration-300 md:bg-transparent md:py-[25px] md:px-[15px] text-[#3c4858] hover:text-primary-dark",
+                )}
+              >
+                {link.label}
+              </NavLink>
+            </li>
+          ))
+        : null}
     </ul>
   );
 }

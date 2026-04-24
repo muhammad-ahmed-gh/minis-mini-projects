@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 import HeaderBurger from "../UI/HeaderBurger";
 import Container from "../UI/Container";
 import AppHeaderLinks from "./AppHeaderLinks";
-import { useParams } from "react-router";
-import { appsData, type AppRoute } from "../../config/appsConfig";
+import { appsData } from "../../config/appsConfig";
+import { useValidatedRoute } from "../../hooks/useValidatedRoute";
 
 export default function AppHeader() {
   const [areWeDown, setAreWeDown] = useState(window.scrollY > 50);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const currentRoute = useParams().appId as AppRoute;
+  const currentRoute = useValidatedRoute();
 
   useEffect(() => {
     const handleScroll = () => setAreWeDown(window.scrollY > 50);
@@ -34,7 +34,7 @@ export default function AppHeader() {
             href="#hero"
             className="font-bold text-[#3c4858] text-[20px] [letter-spacing:3px]"
           >
-            {appsData[currentRoute].headerLogo}
+            {currentRoute ? appsData[currentRoute].headerLogo : "Invalid App"}
           </a>
         </h1>
         <div className="flex items-center">

@@ -31,10 +31,22 @@
   --spacing-section-p: 80px;
 
   --animate-point-right: point-right 0.5s alternate infinite ease-in;
+  --animate-float-show: float-show 0.7s;
 
   @keyframes point-right {
     to {
       transform: translateX(5px);
+    }
+  }
+
+  @keyframes float-show {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
     }
   }
 }
