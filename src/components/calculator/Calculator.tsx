@@ -60,9 +60,9 @@ export default function Calculator() {
   }, [error, result]);
 
   return (
-    <div className="w-fit p-[20px] mt-[10px] mx-auto rounded-[10px] animate-float-show ">
+    <div className="w-[270px] sm:w-[310px] md:w-[325px] p-[20px] mt-[10px] mx-auto rounded-[10px] animate-float-show ">
       <CalculatorScreen input={input} result={result} error={error} />
-      <div className="mt-[20px] grid grid-cols-[repeat(4,minmax(50px,60px))] justify-between gap-[10px] sm:gap-[15px]">
+      <div className="mt-[20px] grid grid-cols-4 justify-between gap-[10px] sm:gap-[15px]">
         {appsData.calculator.settings.keys.map((key) => (
           <CalculatorButton
             key={key.id}

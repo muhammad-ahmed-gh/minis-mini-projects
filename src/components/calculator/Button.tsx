@@ -36,7 +36,9 @@ export default function CalculatorButton(props: Props) {
           : props.bg === "second"
             ? "bg-[#62ec12] border-b-[#42b200] text-[#ffffff]"
             : "bg-[#f8f8f8] border-b-[#b2b2b2] text-[#484e5f]",
-        props.long ? "[grid-column:span_2]" : "aspect-square",
+        props.long
+          ? "[grid-column:span_2]"
+          : "aspect-square",
       )}
     >
       {props.label}
