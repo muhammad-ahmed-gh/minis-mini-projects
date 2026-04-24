@@ -46,13 +46,13 @@ type CalculatorSettings = {
   }[];
 };
 
-type WeatherSettings = {[index: string]: unknown};
-type NotesSettings = {[index: string]: unknown};
-type TodoSettings = {[index: string]: unknown};
-type ClockSettings = {[index: string]: unknown};
-type QuizSettings = {[index: string]: unknown};
-type CurrencyConverterSettings = {[index: string]: unknown};
-type PrayerTimesSettings = {[index: string]: unknown};
+type WeatherSettings = { [index: string]: unknown };
+type NotesSettings = { [index: string]: unknown };
+type TodoSettings = { [index: string]: unknown };
+type ClockSettings = { [index: string]: unknown };
+type QuizSettings = { [index: string]: unknown };
+type CurrencyConverterSettings = { [index: string]: unknown };
+type PrayerTimesSettings = { [index: string]: unknown };
 
 type AppSettingsMap = {
   calculator: CalculatorSettings;
@@ -85,24 +85,33 @@ export const appsData: AppsData = {
     ],
     settings: {
       keys: [
-        { id: 1, label: "7" },
-        { id: 2, label: "8" },
-        { id: 3, label: "9" },
-        { id: 4, label: "DEL", bg: "second" },
-        { id: 5, label: "4" },
-        { id: 6, label: "5" },
-        { id: 7, label: "6" },
-        { id: 8, label: "+" },
-        { id: 9, label: "1" },
-        { id: 10, label: "2" },
-        { id: 11, label: "3" },
-        { id: 12, label: "-" },
-        { id: 13, label: "." },
-        { id: 14, label: "0" },
-        { id: 15, label: "/" },
-        { id: 16, label: "⨯" },
-        { id: 17, label: "RESET", long: true, bg: "second" },
-        { id: 18, label: "=", long: true, bg: "red" },
+        { id: 1, label: "(" },
+        { id: 2, label: ")" },
+        { id: 3, label: "e" },
+        { id: 4, label: "π" },
+
+        { id: 5, label: "7" },
+        { id: 6, label: "8" },
+        { id: 7, label: "9" },
+        { id: 20, label: "⨯" },
+
+        { id: 9, label: "4" },
+        { id: 10, label: "5" },
+        { id: 11, label: "6" },
+        { id: 12, label: "+" },
+
+        { id: 13, label: "1" },
+        { id: 14, label: "2" },
+        { id: 15, label: "3" },
+        { id: 16, label: "-" },
+
+        { id: 8, label: "DEL"},
+        { id: 18, label: "0" },
+        { id: 17, label: "." },
+        { id: 19, label: "/" },
+
+        { id: 21, label: "RESET", long: true, bg: "second" },
+        { id: 22, label: "=", long: true, bg: "red" },
       ],
     },
   },
