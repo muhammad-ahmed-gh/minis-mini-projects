@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useContext } from "react";
-import { CurrSectionContext } from "../../context/CurrSection";
+import { CurrSectionContext } from "../../context/CurrSectionContext";
 import { headerLinks } from "../../config/homeConfigs";
 
 type Props = {

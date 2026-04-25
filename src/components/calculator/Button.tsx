@@ -1,13 +1,12 @@
 import clsx from "clsx";
-import { type Dispatch, type SetStateAction } from "react";
 import { getResult } from "../../utils/calculator";
+import { useInput } from "../../hooks/calculator/useInput";
+import { useError } from "../../hooks/calculator/useError";
 
 type Props = {
   label: string;
   bg?: string;
   long?: boolean;
-  input: string;
-  setInput: Dispatch<SetStateAction<string>>;
 };
 
 const SPECIAL_KEYS = {
@@ -19,11 +18,25 @@ const SPECIAL_KEYS = {
 type SpecialKey = keyof typeof SPECIAL_KEYS;
 
 export default function CalculatorButton(props: Props) {
+  const inputState = useInput();
+  const errorState = useError();
+
   const handleClick = function () {
     if (props.label in SPECIAL_KEYS) {
-      props.setInput(SPECIAL_KEYS[props.label as SpecialKey](props.input));
+      if (props.label === "=") {
+        const result = SPECIAL_KEYS["="](inputState.input);
+        if (result === "" && errorState.error === false)
+          errorState.setError(true);
+        else inputState.setInput(result);
+      } else {
+        inputState.setInput(
+          SPECIAL_KEYS[props.label as SpecialKey](inputState.input),
+        );
+        if (errorState.error) errorState.setError(false);
+      }
     } else {
-      props.setInput((prev) => prev + props.label);
+      inputState.setInput((prev) => prev + props.label);
+      if (errorState.error) errorState.setError(false);
     }
   };
 
