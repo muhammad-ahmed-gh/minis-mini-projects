@@ -2,29 +2,14 @@ import { useEffect, useMemo, useState } from "react";
 import { appsData } from "../../config/appsConfig";
 import CalculatorButton from "./Button";
 import CalculatorScreen from "./Screen";
-import { Parser } from "expr-eval";
 import { BASIC_KEYS, KEYBOARD_MAP } from "../../data/calculator";
+import { getResult } from "../../utils/calculator";
 
 export default function Calculator() {
   const [input, setInput] = useState("");
   const [error, setError] = useState(false);
 
-  const result = useMemo(() => {
-    if (input === "") return "";
-
-    const tmp = input
-      .replace("π", `${Math.PI}`)
-      .replace("e", `${Math.E}`)
-      .replace("⨯", "*");
-
-    try {
-      const parser = new Parser();
-      return parser.evaluate(tmp).toString();
-    } catch {
-      console.log("ERROR OCCURRED");
-      return "";
-    }
-  }, [input]);
+  const result = useMemo(() => getResult(input), [input]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {

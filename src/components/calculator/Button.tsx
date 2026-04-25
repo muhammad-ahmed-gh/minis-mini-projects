@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { type Dispatch, type SetStateAction } from "react";
+import { getResult } from "../../utils/calculator";
 
 type Props = {
   label: string;
@@ -12,6 +13,7 @@ type Props = {
 const SPECIAL_KEYS = {
   RESET: () => "",
   DEL: (input: string) => input.slice(0, -1),
+  "=": (input: string) => getResult(input),
 };
 
 type SpecialKey = keyof typeof SPECIAL_KEYS;
@@ -36,9 +38,7 @@ export default function CalculatorButton(props: Props) {
           : props.bg === "second"
             ? "bg-[#62ec12] border-b-[#42b200] text-[#ffffff]"
             : "bg-[#f8f8f8] border-b-[#b2b2b2] text-[#484e5f]",
-        props.long
-          ? "[grid-column:span_2]"
-          : "aspect-square",
+        props.long ? "[grid-column:span_2]" : "aspect-square",
       )}
     >
       {props.label}
