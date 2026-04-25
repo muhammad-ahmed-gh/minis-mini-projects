@@ -29,13 +29,8 @@ export default function AppHeader() {
       )}
     >
       <Container className="flex justify-between items-center h-header-h">
-        <h1 className="uppercase">
-          <a
-            href="#hero"
-            className="font-bold text-[#3c4858] text-[20px] [letter-spacing:3px]"
-          >
-            {currentRoute ? appsData[currentRoute].headerLogo : "Invalid App"}
-          </a>
+        <h1 className="uppercase font-bold text-[#3c4858] text-[20px] [letter-spacing:3px] cursor-pointer">
+          {currentRoute ? appsData[currentRoute].headerLogo : "Invalid App"}
         </h1>
         <div className="flex items-center">
           <HeaderBurger isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
