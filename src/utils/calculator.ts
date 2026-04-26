@@ -5,14 +5,14 @@ export const getResult = function (expr: string) {
 
   const finalExpr = expr
     .replaceAll("⨯", "*")
-    .replace(/(^|[+\-*/(])π/gi, `$1${Math.PI}`) // replace if π follows ( + - * / or is in the beginning
+    .replace(/(^|[+\-*/(])π/gi, `$1${Math.PI}`)
     .replace(/(^|[+\-*/(])e/gi, `$1${Math.E}`);
+  // replace if π,e follows ( + - * / or are in the beginning
 
   if (/[πe]/i.test(finalExpr)) return "";
 
   try {
-    const parser = new Parser();
-    return parser.evaluate(finalExpr).toString();
+    return new Parser().evaluate(finalExpr).toString();
   } catch {
     return "";
   }
