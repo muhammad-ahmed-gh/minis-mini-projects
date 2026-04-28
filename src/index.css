@@ -5,10 +5,10 @@
     @apply scroll-smooth;
   }
   * {
-    @apply text-text-color font-[Poppins,system-ui,sans-serif];
+    @apply font-[Poppins,system-ui,sans-serif];
   }
   body {
-    @apply overflow-x-hidden;
+    @apply overflow-x-hidden text-text-color;
   }
 }
 
