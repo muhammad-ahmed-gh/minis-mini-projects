@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { useTasks } from "../../hooks/todoList/useTasks";
+import penStrokeEffect1Path from "../../assets/audio/pen-stroke-1.mp3";
 
 type Props = {
   label: string;
@@ -9,8 +10,11 @@ type Props = {
 
 export default function Task(props: Props) {
   const tasksState = useTasks();
+  const penStrokeEffect1 = new Audio(penStrokeEffect1Path);
 
   const toggleDone = () => {
+    if (!props.isDone) penStrokeEffect1.play();
+
     tasksState.setTasks((prevTasks) =>
       prevTasks.map((task) =>
         task.label === props.label
@@ -38,8 +42,14 @@ export default function Task(props: Props) {
     );
   };
 
+  const deleteTask = () => {
+    tasksState.setTasks((prevTasks) =>
+      prevTasks.filter((task) => task.label !== props.label),
+    );
+  };
+
   return (
-    <div className="flex justify-between items-center px-[20px] border-1 border-[#eee] rounded-[15px] h-[65px]">
+    <div className="flex justify-between items-center px-[20px] border-1 border-[#eee] rounded-[15px] h-[65px] animate-float-show [animation-duration:300ms]">
       <div className="flex items-center gap-[20px]">
         <div
           className="text-primary text-[22px] cursor-pointer"
@@ -53,17 +63,34 @@ export default function Task(props: Props) {
             )}
           ></i>
         </div>
-        <span>{props.label}</span>
-      </div>
-      <div
-        className="text-text-color-light cursor-pointer"
-        onClick={toggleFavorite}
-      >
-        <i
+        <span
           className={clsx(
-            props.isFavorite ? "fa-solid fa-star" : "fa-regular fa-star",
+            "relative transition:colors duration-300 before:h-[2px] before:bg-text-color-light before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:transition-[width]",
+            props.isDone ? "text-text-color-light before:w-full" : "before:w-0",
           )}
-        ></i>
+        >
+          {props.label}
+        </span>
+      </div>
+      <div className="flex items-center gap-[15px]">
+        <div
+          title="add to favorites"
+          className="text-text-color-light cursor-pointer transition-colors duration-300 hover:text-amber-300"
+          onClick={toggleFavorite}
+        >
+          <i
+            className={clsx(
+              props.isFavorite ? "fa-solid fa-star" : "fa-regular fa-star",
+            )}
+          ></i>
+        </div>
+        <div
+          title="delete task"
+          className="text-text-color-light cursor-pointer transition-colors duration-300 hover:text-red-500"
+          onClick={deleteTask}
+        >
+          <i className="fa-solid fa-minus"></i>
+        </div>
       </div>
     </div>
   );
