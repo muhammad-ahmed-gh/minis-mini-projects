@@ -49,10 +49,10 @@ export default function Task(props: Props) {
   };
 
   return (
-    <div className="flex justify-between items-center px-[20px] border-1 border-[#eee] rounded-[15px] h-[65px] animate-float-show [animation-duration:300ms]">
-      <div className="flex items-center gap-[20px]">
+    <div className="flex justify-between items-center px-[20px] border-1 border-[#eee] rounded-[15px] h-[60px] md:h-[65px] animate-float-show [animation-duration:300ms]">
+      <div className="flex items-center gap-[10px] md:gap-[20px]">
         <div
-          className="text-primary text-[22px] cursor-pointer"
+          className="text-primary text-[20px] md:text-[22px] cursor-pointer"
           onClick={toggleDone}
         >
           <i
@@ -65,7 +65,7 @@ export default function Task(props: Props) {
         </div>
         <span
           className={clsx(
-            "relative transition:colors duration-300 before:h-[2px] before:bg-text-color-light before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:transition-[width]",
+            "relative transition:colors duration-300 text-[15px] md:[font-size:inherit] before:h-[2px] before:bg-text-color-light before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:transition-[width]",
             props.isDone ? "text-text-color-light before:w-full" : "before:w-0",
           )}
         >

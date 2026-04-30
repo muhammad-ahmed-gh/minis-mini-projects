@@ -25,7 +25,7 @@ export default function HeaderBurger(props: Props) {
 
   return (
     <div
-      className="mr-[15px] flex flex-col justify-center gap-[5px] w-[25px] cursor-pointer md:hidden"
+      className="flex flex-col justify-center gap-[5px] w-[25px] cursor-pointer md:hidden"
       onClick={handleClick}
     >
       <BurgerBar isMenuOpen={props.isMenuOpen} />
