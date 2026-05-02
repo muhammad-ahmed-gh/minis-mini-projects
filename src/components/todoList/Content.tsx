@@ -22,7 +22,8 @@ export default function TodoListContent() {
     <Container className="mt-[20px]">
       <form
         action={handleAddTask}
-        className="flex bg-gray-100 rounded-[15px] md:rounded-[20px] h-[60px] md:h-[70px] transition-shadow duration-100 has-[input:focus]:ring-3 has-[input:focus]:ring-primary "
+        className="flex bg-gray-100 rounded-[15px] md:rounded-[20px] h-[60px] md:h-[70px] overflow-hidden transition-shadow duration-100 has-[input:focus]:ring-3 has-[input:focus]:ring-primary "
+        // overflow is hidden due to mobile phones issue (input field overflow)
       >
         <button
           type="submit"
